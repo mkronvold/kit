@@ -29,7 +29,7 @@ for cluster in $(tanzu tmc cluster list -m $supervisor -o json | jq -r '.cluster
 do
   k ctx $cluster
   go run .
-  mv cluster.html $cluster.html
+  mv cluster.html html/$cluster.html
 done
 
-ls -1 *.html
+ls -1 html/*.html
