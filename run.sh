@@ -25,11 +25,17 @@ supervisor=$(tanzu tmc management-cluster list -o json | jq -r '.managementClust
 # run the kit
 # and rename the output file
 
+echo "<html>" > html/index.html
+echo "<head><title>${supervisor}</title></head>" >> html/index.html
+echo "<body><table>" >> html/index.html
+
 for cluster in $(tanzu tmc cluster list -m $supervisor -o json | jq -r '.clusters[] | "\(.fullName.name)"')
 do
   k ctx $cluster
   go run .
   mv cluster.html html/$cluster.html
+  echo "<tr><td><a href=$cluster.html>${cluster}</a></td</tr>" >> html/index.html
 done
 
 ls -1 html/*.html
+echo "</table></body></html>" >> html/index.html
