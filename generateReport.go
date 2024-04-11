@@ -34,7 +34,7 @@ func generateReport(nodes clusterCapacity, rqs []resourcesquotas, nodeList []nod
     var contentPvc []byte
     var contentNamespace []byte
     for _, rq := range rqs {
-        temporaryContent := fmt.Sprintf("<tr><td>" + rq.Namespace + "</td><td>%.1f</td><td>%.1f</td><td>%.1f</td><td>%.1f</td><td>%.1f</td><td>%.1f</td></tr>",rq.RequestedCpu,rq.RequestedMemory,rq.MaxLimitCpu,rq.MaxLimitMemory,rq.RateCpu,rq.RateMemory)
+        temporaryContent := fmt.Sprintf("<tr><td>%s</td><td>%.1f</td><td>%.1f</td><td>%.1f</td><td>%.1f</td><td>%.1f</td><td>%.1f</td></tr>",rq.Namespace,rq.RequestedCpu,rq.RequestedMemory,rq.MaxLimitCpu,rq.MaxLimitMemory,rq.RateCpu,rq.RateMemory)
         contentNode = append(contentNode, temporaryContent...)
     }
     for _, node := range nodeList {

@@ -4,6 +4,6 @@
 
 datestamp=$(date +'%Y-%m-%d_%H-%M-%S')
 
-g add html
+g add -A
 g commit -m "run ${datestamp}"
 g push
