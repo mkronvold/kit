@@ -34,7 +34,13 @@ func generateReport(nodes clusterCapacity, rqs []resourcesquotas, nodeList []nod
     var contentPvc []byte
     var contentNamespace []byte
     for _, rq := range rqs {
-        temporaryContent := fmt.Sprintf("<tr><td>%s</td><td>%.1f</td><td>%.1f</td><td>%.1f</td><td>%.1f</td><td>%.1f</td><td>%.1f</td></tr>",rq.Namespace,strconv.ParseFloat(rq.RequestedCpu,64),strconv.ParseFloat(rq.RequestedMemory,64),strconv.ParseFloat(rq.MaxLimitCpu,64),strconv.ParseFloat(rq.MaxLimitMemory,64),strconv.ParseFloat(rq.RateCpu,64),strconv.ParseFloat(rq.RateMemory,64))
+        rCpu, err := strconv.ParseFloat(rq.RequestedCpu, 64); common.ExitIfError(err)
+        rMem, err := strconv.ParseFloat(rq.RequestedMemory, 64); common.ExitIfError(err)
+        rMaxCpu, err := strconv.ParseFloat(rq.MaxLimitCpu, 64); common.ExitIfError(err)
+        rMaxMem, err := strconv.ParseFloat(rq.MaxLimitMemory, 64); common.ExitIfError(err)
+        rRateCpu, err := strconv.ParseFloat(rq.RateCpu, 64); common.ExitIfError(err)
+        rRateMem, err := strconv.ParseFloat(rq.RateMemory, 64); common.ExitIfError(err)
+        temporaryContent := fmt.Sprintf("<tr><td>%s</td><td>%.1f</td><td>%.1f</td><td>%.1f</td><td>%.1f</td><td>%.1f</td><td>%.1f</td></tr>\n",rq.Namespace,rCpu,rMem,rMaxCpu,rMaxMem,rRateCpu,rRateMem)
         contentNode = append(contentNode, temporaryContent...)
     }
     for _, node := range nodeList {
