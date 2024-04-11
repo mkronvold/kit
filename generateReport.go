@@ -23,11 +23,11 @@ func generateReport(nodes clusterCapacity, rqs []resourcesquotas, nodeList []nod
     headerImage := []byte("<thead><tr><th scope='col'>Image Name</th><th scope='col'> Size (Mb) </th><th scope='col'> Node name </th></tr></thead><tbody>")
     headerPvc := []byte("<thead><tr><th scope='col'>Pvc Name</th><th scope='col'>Pvc Namespace</th><th scope='col'>Pvc Size</th></tr></thead><tbody>")
     endTable := []byte("</tbody></table >")
-    titleNamespace := []byte("<h2>Namespace Informations : </h2>")
-    titleCluster := []byte("<h2>Cluster Informations :  </h2>")
-    titleResource := []byte("<h2>Resource Informations : </h2>")
-    titleImage := []byte("<h2>Images Informations : </h2>")
-    titlePvc := []byte("<h2>Pvc Informations : </h2>")
+    titleNamespace := []byte("<h2>Namespace Information : </h2>")
+    titleCluster := []byte("<h2>Cluster Information :  </h2>")
+    titleResource := []byte("<h2>Resource Information : </h2>")
+    titleImage := []byte("<h2>Images Information : </h2>")
+    titlePvc := []byte("<h2>Pvc Information : </h2>")
     var contentNode []byte
     var contentNodePool []byte
     var contentImage []byte
